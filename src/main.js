@@ -86,14 +86,14 @@ run = function (params, callback = null, stdout = null) {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-ipcMain.on('minerva-exec', function (event, nome, borda, mostrar) {
-    params = ['C:\\iacon\\dharma-servicos\\tools\\hello_world.py'];
+ipcMain.on('minerva-exec', function (event, params) {
+    p = ['C:\\iacon\\dharma-servicos\\tools\\hello_world.py'];
 
-    params.push(nome);
-    params.push(`borda=${borda}`);
-    if (mostrar) params.push(`--mostrar`);
+    p.push(params.nome);
+    p.push(`borda=${params.borda}`);
+    if (params.mostrar) p.push(`--mostrar`);
 
-    run(params, callback = function (msg) {
+    run(p, callback = function (msg) {
         event.sender.send('minerva-pong', msg);
     }, stdout = function (msg) {
         event.sender.send('minerva-resp', msg);
