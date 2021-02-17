@@ -14,6 +14,7 @@ const createWindow = () => {
     const mainWindow = new BrowserWindow({
         width: 780,
         height: 520,
+        icon: 'src/contents/minerva.ico',
         webPreferences: {
             nodeIntegration: true
         }
